@@ -24,9 +24,7 @@ namespace CityInfo1
             var builder = new ConfigurationBuilder()
                             .SetBasePath(env.ContentRootPath)
                             .AddJsonFile("Appsettings.json",optional:true, reloadOnChange:true)
-                            .AddJsonFile($"AppSettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-                            .AddEnvironmentVariables();
-
+                            .AddJsonFile($"AppSettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
             Configuration = builder.Build();
         }    
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -42,8 +40,7 @@ namespace CityInfo1
 #else
         services.AddTransient<IMailService, CloudMailService>();
 #endif
-            var connectionString = Startup.Configuration["connectionStrings:cityInfoDBConnectionString"];
-
+            var connectionString= @"Server=TOSHIBA\SQLEXPRESS;Database=CityInfoDB;Trusted_Connection=True;";
             services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connectionString));
 
         }
