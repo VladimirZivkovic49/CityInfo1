@@ -11,7 +11,7 @@ namespace CityInfo1.Entities
         public CityInfoContext(DbContextOptions<CityInfoContext> options)
               : base(options)
         {
-            Database.Migrate();
+            Database.EnsureCreated();
         }
         public DbSet<City> Cities { get; set; }
         public DbSet<PointOfInterest> PointsOfInterest { get; set; }
