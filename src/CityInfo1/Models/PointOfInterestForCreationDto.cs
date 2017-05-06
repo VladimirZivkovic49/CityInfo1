@@ -12,7 +12,7 @@ namespace CityInfo1.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(10)]
         public string Description { get; set; }
     }
 }

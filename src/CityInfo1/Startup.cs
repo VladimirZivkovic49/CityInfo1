@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using NLog.Extensions.Logging;
 using CityInfo1.Services;
 using Microsoft.Extensions.Configuration;
-using CityInfo1.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace CityInfo1
 {
@@ -39,11 +37,8 @@ namespace CityInfo1
             services.AddTransient<IMailService, LocalMailService>();
 #else
         services.AddTransient<IMailService, CloudMailService>();
-#endif
-            var connectionString= @"Server=TOSHIBA\SQLEXPRESS;Database=CityInfoDB;Trusted_Connection=True;";
-            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connectionString));
-
-        }
+#endif           
+            }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
