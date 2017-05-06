@@ -40,7 +40,7 @@ namespace CityInfo1
 #else
         services.AddTransient<IMailService, CloudMailService>();
 #endif
-            var connectionString= @"Server=TOSHIBA\SQLEXPRESS;Database=CityInfoDB;Trusted_Connection=True;";
+            var connectionString= @"Server=(localdb)\MSSQLLocalDB;Database=CityInfoDB;Trusted_Connection=True;";
             services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connectionString));
 
         }
