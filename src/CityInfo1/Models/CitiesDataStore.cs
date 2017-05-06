@@ -7,6 +7,10 @@ namespace CityInfo1.Models
 {
     public class CitiesDataStore
     {
+
+        
+        //komentar
+
         public static CitiesDataStore Current { get; } = new CitiesDataStore();
         public List<CityDto> Cities { get; set; }
         public CitiesDataStore()
