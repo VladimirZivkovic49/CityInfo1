@@ -209,8 +209,8 @@
 --reference:C:\Users\DOIT_DOTNET_USER15\.nuget\packages\System.Xml.XmlSerializer\4.0.11\ref\netstandard1.3\System.Xml.XmlSerializer.dll
 --resource:"E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\obj\Debug\netcoreapp1.0\CityInfo1dotnet-compile.deps.json",CityInfo1.deps.json
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Program.cs
-E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\CityInfoExtensions.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Startup.cs
+E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\CityInfoExtensions.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\CitiesController.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\PointsOfInterestController.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\DummyController.cs
@@ -229,6 +229,6 @@ E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Migrations
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Migrations\CityInfoContextModelSnapshot.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\CloudMailService.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\LocalMailService.cs
-E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\ICityInfoRepository.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\CityInfoRepository.cs
+E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\ICityInfoRepository.cs
 E:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\IMailService.cs
