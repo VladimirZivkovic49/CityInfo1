@@ -182,6 +182,7 @@
 --reference:C:\Users\Zivkovic Vladimir\.nuget\packages\System.Xml.XmlSerializer\4.0.11\ref\netstandard1.3\System.Xml.XmlSerializer.dll
 --resource:"F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\obj\Debug\netcoreapp1.0\CityInfo1dotnet-compile.deps.json",CityInfo1.deps.json
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Program.cs
+F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\CityInfoExtensions.cs
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Startup.cs
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\CitiesController.cs
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\PointsOfInterestController.cs
@@ -189,7 +190,15 @@ F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Models\Poi
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Models\CityDto.cs
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Models\PointOfInterestDto.cs
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Models\CitiesDataStore.cs
+<<<<<<< HEAD
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Models\PointOfInterestForCreationDto.cs
+=======
+F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Migrations\20170504110243_CityInfoDBInitialMigration.Designer.cs
+F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Migrations\20170504110243_CityInfoDBInitialMigration.cs
+F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Migrations\20170504115449_CityInfoDBAddPOIDescription.Designer.cs
+F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Migrations\20170504115449_CityInfoDBAddPOIDescription.cs
+F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Migrations\CityInfoContextModelSnapshot.cs
+>>>>>>> origin/master
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\CloudMailService.cs
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\LocalMailService.cs
 F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Services\IMailService.cs
