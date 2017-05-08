@@ -1,4 +1,5 @@
-﻿using CityInfo1.Models;
+﻿using AutoMapper;
+using CityInfo1.Models;
 using CityInfo1.Services;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -46,17 +47,20 @@ namespace CityInfo1.Controllers
                        return NotFound();
                    }
                    return Ok(city.PointsOfInterest);*/
-                var pointsOfInterestForCityResults = new List<PointOfInterestDto>();
-                foreach (var poi in pointsOfInterestForCity)
-                {
-                    pointsOfInterestForCityResults.Add(new PointOfInterestDto()
-                    {
-                        Id = poi.Id,
-                        Name = poi.Name,
-                        Description = poi.Description
-                    });
+                /*   var pointsOfInterestForCityResults = new List<PointOfInterestDto>();
+                   foreach (var poi in pointsOfInterestForCity)
+                   {
+                       pointsOfInterestForCityResults.Add(new PointOfInterestDto()
+                       {
+                           Id = poi.Id,
+                           Name = poi.Name,
+                           Description = poi.Description
+                       });
 
-                }
+                   }*/
+                var pointsOfInterestForCityResults =
+                    Mapper.Map<IEnumerable<PointOfInterestDto>>(pointsOfInterestForCity);
+
                 return Ok(pointsOfInterestForCityResults);
 
             }
@@ -96,13 +100,14 @@ namespace CityInfo1.Controllers
                 return NotFound();
             }
 
-            var pointOfInterestResult = new PointOfInterestDto()
-            {
-                Id = pointOfInterest.Id,
-                Name = pointOfInterest.Name,
-                Description = pointOfInterest.Description
+            /*  var pointOfInterestResult = new PointOfInterestDto()
+              {
+                  Id = pointOfInterest.Id,
+                  Name = pointOfInterest.Name,
+                  Description = pointOfInterest.Description
 
-            };
+              };*/
+            var pointOfInterestResult = Mapper.Map<PointOfInterestDto>(pointOfInterest);
             return Ok(pointOfInterestResult);
         }
         [HttpPost("{cityId}/pointsofinterest")]

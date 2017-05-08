@@ -1,4 +1,5 @@
-﻿using CityInfo1.Models;
+﻿using AutoMapper;
+using CityInfo1.Models;
 using CityInfo1.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -28,17 +29,17 @@ namespace CityInfo1.Controllers
                   });  uklonjeno kada je formirana klasa "CitiesDatastre sa svojstvima  traženih podataka kao hard copi */
             var cityEntities = _cityInfoRepository.GetCities();
 
-            var results = new List<CityWithoutPointsOfInterestDto>();
-
-            foreach (var cityEntity in cityEntities)
-            {
+                   //  var results = new List<CityWithoutPointsOfInterestDto>();
+            var results = Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
+                 /*  foreach (var cityEntity in cityEntities)
+                  {
                 results.Add(new CityWithoutPointsOfInterestDto
                 {
                     Id = cityEntity.Id,
                     Description = cityEntity.Description,
                     Name = cityEntity.Name
                 });
-            }
+            }*/
 
             return Ok(results);
         }
@@ -61,7 +62,9 @@ namespace CityInfo1.Controllers
 
             if (includePointsOfInterest)
             {
-                var cityResult = new CityDto()
+                var cityResult = Mapper.Map<CityDto>(city);
+                
+                /*  var cityResult = new CityDto()
                 {
                     Id = city.Id,
                     Name = city.Name,
@@ -78,19 +81,19 @@ namespace CityInfo1.Controllers
                         Description = poi.Description
 
                     });
-                }
+                }*/
 
                 return Ok(cityResult);
             }
-
-            var cityWithoutPointsOfInterestResult =
+            var cityWithoutPointsOfInterestResult = Mapper.Map<CityWithoutPointsOfInterestDto>(city);
+          /*  var cityWithoutPointsOfInterestResult =
                 new CityWithoutPointsOfInterestDto()
                 {
                     Id = city.Id,
                     Description = city.Description,
                     Name = city.Name
 
-                };
+                };*/
             return Ok(cityWithoutPointsOfInterestResult);
         }
     }
