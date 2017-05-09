@@ -207,8 +207,8 @@
 -r:"C:\Users\Zivkovic Vladimir\.nuget\packages\System.Xml.XmlSerializer\4.0.11\ref\netstandard1.3\System.Xml.XmlSerializer.dll"
 -resource:"F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\obj\Debug\netcoreapp1.0\CityInfo1dotnet-compile.deps.json",CityInfo1.deps.json
 "F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Program.cs"
-"F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Startup.cs"
 "F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\CityInfoExtensions.cs"
+"F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Startup.cs"
 "F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\CitiesController.cs"
 "F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\PointsOfInterestController.cs"
 "F:\Programiranje\Odbir\projekat 5 core\170425\CityInfo1\src\CityInfo1\Controllers\DummyController.cs"

@@ -127,22 +127,40 @@ namespace CityInfo1.Controllers
                    return BadRequest(ModelState);
                }
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+
+            /*  if (city == null)
+              {
+                  return NotFound();
+              }*/
+            if (!_cityInforepository.CityExists(cityId))
             {
                 return NotFound();
             }
-            var maxPointOfinterestId = CitiesDataStore.Current.Cities.SelectMany(
-                c => c.PointsOfInterest).Max(p => p.Id);
-            var finalPointOfInterest = new PointOfInterestDto()
+            /*  var maxPointOfinterestId = CitiesDataStore.Current.Cities.SelectMany(
+                  c => c.PointsOfInterest).Max(p => p.Id);*/
+
+
+            /* var finalPointOfInterest = new PointOfInterestDto()
+             {
+                 Id = ++maxPointOfinterestId,
+                 Name = pointOfInterest.Name,
+                 Description = pointOfInterest.Description
+             };*/
+
+            var finalPointOfInterest = Mapper.Map<Entities.PointOfInterest>(pointOfInterest);
+
+            _cityInforepository.AddPointOfInterestForCity(cityId, finalPointOfInterest);
+
+            if (!_cityInforepository.Save())
             {
-                Id = ++maxPointOfinterestId,
-                Name = pointOfInterest.Name,
-                Description = pointOfInterest.Description
-            };
-            city.PointsOfInterest.Add(finalPointOfInterest);
+                return StatusCode(500, "Problem tokom rukovamnja zahtevom");
+            }
+
+            // city.PointsOfInterest.Add(finalPointOfInterest);
+            var createPointOfInterestToReturn = Mapper.Map<Models.PointOfInterestDto>(finalPointOfInterest);
 
             return CreatedAtRoute("GetPointOfInterest", new
-            { cityId = cityId, id = finalPointOfInterest.Id }, finalPointOfInterest);
+            { cityId = cityId, id = createPointOfInterestToReturn.Id }, createPointOfInterestToReturn);
 
         }
         [HttpPut("{cityId}/pointsofinterest/{id}")]
