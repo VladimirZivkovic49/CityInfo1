@@ -51,11 +51,19 @@ city.PointsOfInterest.Add(pointOfInterest);
             return _context.PointsOfInterest
                 .Where(p => p.CityId == cityId && p.Id == pointOfInterestId).FirstOrDefault();
         }
+      /*  public void DelitePointOfinterest(PointOfInterest pointOfInterest)
+        {
+            _context.PointsOfInterest.Remove(pointOfInterest);
+        }*/
 
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);
         }
 
+        public void DelitePointOfInterest(PointOfInterest pointOfInterest)
+        {
+            _context.PointsOfInterest.Remove(pointOfInterest); 
+        }
     }
 }

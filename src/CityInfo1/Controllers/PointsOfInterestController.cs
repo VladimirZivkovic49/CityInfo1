@@ -180,20 +180,38 @@ namespace CityInfo1.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+            /* var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+             if (city == null)
+             {
+                 return NotFound();
+             }*/
+
+            if(!_cityInforepository.CityExists(cityId))
             {
                 return NotFound();
             }
-            var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(p => p.Id == id);
 
-            if (pointOfInterestFromStore == null)
+            /* var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(p => p.Id == id);
+
+             if (pointOfInterestFromStore == null)
+             {
+                 return NotFound();
+             }*/
+            var pointOfInterestEntity = _cityInforepository.GetPointsOfInterestForCity(cityId, id);
+
+            if (pointOfInterestEntity == null)
             {
                 return NotFound();
             }
-            pointOfInterestFromStore.Name = pointOfInterest.Name;
-            pointOfInterestFromStore.Description = pointOfInterest.Description;
 
+            Mapper.Map(pointOfInterest, pointOfInterestEntity);
+        /*    pointOfInterestFromStore.Name = pointOfInterest.Name;
+            pointOfInterestFromStore.Description = pointOfInterest.Description;*/
+        if (!_cityInforepository.Save())
+            {
+
+                return StatusCode(500, "problem sa rukovanjem zahteva");
+            }
             return NoContent();
         }
         [HttpPatch("{cityId}/pointsofinterest/{id}")]
@@ -206,23 +224,39 @@ namespace CityInfo1.Controllers
             {
                 return BadRequest();
             }
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+            /*  var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+              if (city == null)
+              {
+                  return NotFound();
+              }*/
+if(!_cityInforepository.CityExists(cityId))
             {
                 return NotFound();
             }
-            var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == id);
 
-            if (pointOfInterestFromStore == null)
+            /*  var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == id);
+
+              if (pointOfInterestFromStore == null)
+              {
+                  return NotFound();
+              }*/
+            var pointOfInterestEntity = _cityInforepository.GetPointsOfInterestForCity(cityId, id);
+if(pointOfInterestEntity == null)
             {
                 return NotFound();
             }
-            var pointOfInterestToPatch =
-                            new PointOfInterestForUpdateDto()
-                            {
-                                Name = pointOfInterestFromStore.Name,
-                                Description = pointOfInterestFromStore.Description
-                            };
+
+            var pointOfInterestToPatch = Mapper.Map<PointOfInterestForUpdateDto>(pointOfInterestEntity);
+
+            /*   var pointOfInterestToPatch =
+
+                   new PointOfInterestForUpdateDto()
+                               {
+                                   Name = pointOfInterestFromStore.Name,
+                                   Description = pointOfInterestFromStore.Description
+                               };*/
+
+
 
             patchDoc.ApplyTo(pointOfInterestToPatch, ModelState);
 
@@ -240,8 +274,16 @@ namespace CityInfo1.Controllers
                 return BadRequest(ModelState);
             }
 
-            pointOfInterestFromStore.Name = pointOfInterestToPatch.Name;
-            pointOfInterestFromStore.Description = pointOfInterestToPatch.Description;
+            /*  pointOfInterestFromStore.Name = pointOfInterestToPatch.Name;
+              pointOfInterestFromStore.Description = pointOfInterestToPatch.Description;*/
+
+            Mapper.Map(pointOfInterestToPatch, pointOfInterestEntity);
+          
+           if (!_cityInforepository.Save())
+            {
+                return StatusCode (500, "Problem sa rukovanjem zahteva");
+            }
+
 
             return NoContent();
 
@@ -249,24 +291,49 @@ namespace CityInfo1.Controllers
         [HttpDelete("{cityId}/pointsofinterest/{id}")]
         public IActionResult DelitePointOfInterest(int cityId, int id)
         {
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            if (city == null)
+            /*  var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+              if (city == null)
+              {
+                  return NotFound();
+              }*/
+            if (!_cityInforepository.CityExists(cityId))
             {
                 return NotFound();
             }
-            var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == id);
 
-            if (pointOfInterestFromStore == null)
+
+            /*  var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(c => c.Id == id);
+
+              if (pointOfInterestFromStore == null)
+              {
+                  return NotFound();
+              }*/
+            var pointOfInterestEntity = _cityInforepository.GetPointsOfInterestForCity(cityId, id);
+
+            if (pointOfInterestEntity == null)
             {
                 return NotFound();
             }
-            city.PointsOfInterest.Remove(pointOfInterestFromStore);
+            // city.PointsOfInterest.Remove(pointOfInterestFromStore);
+            _cityInforepository.DelitePointOfInterest(pointOfInterestEntity);
 
+            if(!_cityInforepository.Save())
+            {
+                return StatusCode(500, "problem sa rukovanjem zahteva");
+
+            }
+
+
+            /*  _mailService.Send("Points of interest delited",
+
+                  $"Point of interest {pointOfInterestFromStore.Name} with id {pointOfInterestFromStore.Id} was delited");
+
+              return NoContent();*/
             _mailService.Send("Points of interest delited",
-                $"Point of interest {pointOfInterestFromStore.Name} with id {pointOfInterestFromStore.Id} was delited");
 
-            return NoContent();
+                           $"Point of interest {pointOfInterestEntity.Name} with id {pointOfInterestEntity.Id} was delited");
 
+            return NoContent(); 
         }
         }
     }
